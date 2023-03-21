@@ -12,5 +12,5 @@ export default defineConfig({
       // hot-reloading web components
       fastRefresh: false,
     }),
-  ],
+  ]
 });
