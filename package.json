@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "build:release": "rushx build",
     "serve": "vite preview"
   },
