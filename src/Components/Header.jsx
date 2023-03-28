@@ -1,20 +1,18 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import UploadFilePopup from './UploadFilePopup';
 
-function Header() {
+
+function Header({handleLastUpdatedChange}) {
     return (
         <header className='bg-white flex justify-between px-5 py-3'>
             <h1>CAI Test</h1>
             <nav>
                 <ul>
                     <li>
-                        <button className='flex items-center'>
-                            <p className='px-2'>Upload</p>
-                            <i id='upload-icon' className="fa-solid fa-cloud-arrow-up"></i>
-                        </button>
-                    </li>
-                    <li>
-                        <p></p>
-                        <i></i>
+                        {/* <div>Popup content here !!</div> */}
+                        <UploadFilePopup handleLastUpdatedChange={handleLastUpdatedChange} />
                     </li>
                 </ul>
             </nav>

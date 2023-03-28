@@ -8,7 +8,6 @@ function ImageContainer({ sampleImageUrl }) {
 
     const provenance = useC2pa(sampleImageUrl);
     const viewMoreUrl = generateVerifyUrl(sampleImageUrl);
-
     return (
         <div>
             {provenance?.manifestStore ? (
@@ -19,7 +18,9 @@ function ImageContainer({ sampleImageUrl }) {
                         viewMoreUrl={viewMoreUrl}
                     />
                 </div>
-            ) : null}
+            ) : <div>
+                <img src={sampleImageUrl} alt="" />
+            </div> }
         </div>
     );
 }
