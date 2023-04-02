@@ -4,7 +4,7 @@ import 'reactjs-popup/dist/index.css';
 import UploadFilePopup from './UploadFilePopup';
 
 
-function Header({handleLastUpdatedChange}) {
+function Header({handleLastUpdatedChange, session}) {
     return (
         <header className='bg-white flex justify-between px-5 py-3'>
             <h1>CAI Test</h1>
@@ -12,7 +12,7 @@ function Header({handleLastUpdatedChange}) {
                 <ul>
                     <li>
                         {/* <div>Popup content here !!</div> */}
-                        <UploadFilePopup handleLastUpdatedChange={handleLastUpdatedChange} />
+                        <UploadFilePopup session={session} handleLastUpdatedChange={handleLastUpdatedChange} />
                     </li>
                 </ul>
             </nav>

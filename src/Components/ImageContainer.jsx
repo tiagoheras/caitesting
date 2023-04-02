@@ -18,9 +18,9 @@ function ImageContainer({ sampleImageUrl }) {
                         viewMoreUrl={viewMoreUrl}
                     />
                 </div>
-            ) : <div>
+            ) : (<div>
                 <img src={sampleImageUrl} alt="" />
-            </div> }
+            </div>) }
         </div>
     );
 }

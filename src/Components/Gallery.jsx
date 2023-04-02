@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Masonry from 'react-responsive-masonry';
-import { supabase } from '../utils/supabaseClient';
+import { bucket, supabase } from '../utils/supabaseClient';
 import ImageContainer from './ImageContainer';
 
 
@@ -9,19 +9,17 @@ function Gallery({ lastUpdated }) {
 
   useEffect(() => {
     async function fetchImages() {
-      const bucket = await supabase.storage.from('caitesting-resources');
-
       const files = await bucket
         .list("imagenes", {
           limit: 100,
           offset: 0,
           sortBy: { column: 'name', order: 'asc' }
         })
-        .then(result => result.error ? null : result.data.map(file => "imagenes/" + file.name))
+        .then(result => result.error ? console.log(result.error) : result.data.map(file => "imagenes/" + file.name))
 
       const urls = await bucket
         .createSignedUrls(files, 86400)
-        .then(result => result.error ? null : result.data.map(asset => asset.signedUrl));
+        .then(result => result.error ? console.log(result.error) : result.data.map(asset => asset.signedUrl));
 
       setSampleImages(urls)
     }
