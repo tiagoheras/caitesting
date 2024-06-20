@@ -28,7 +28,7 @@ function Gallery({ lastUpdated }) {
 
   return (
     <div className='w-2/3 mx-auto'>
-      <Masonry columnsCount={2}>
+      <Masonry columnsCount={2} gutter='15px'>
         {
           sampleImages.map(sampleImage => {
             return (
