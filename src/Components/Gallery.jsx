@@ -1,31 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Masonry from 'react-responsive-masonry';
-import { bucket, supabase } from '../utils/supabaseClient';
 import ImageContainer from './ImageContainer';
 
 
-function Gallery({ lastUpdated }) {
-  const [sampleImages, setSampleImages] = useState([]);
-
-  useEffect(() => {
-    async function fetchImages() {
-      const files = await bucket
-        .list("imagenes", {
-          limit: 100,
-          offset: 0,
-          sortBy: { column: 'name', order: 'asc' }
-        })
-        .then(result => result.error ? console.log(result.error) : result.data.map(file => "imagenes/" + file.name))
-
-      const urls = await bucket
-        .createSignedUrls(files, 86400)
-        .then(result => result.error ? console.log(result.error) : result.data.map(asset => asset.signedUrl));
-
-      setSampleImages(urls)
-    }
-    fetchImages();
-  }, [lastUpdated])
-
+function Gallery({ lastUpdated, sampleImages }) {
   return (
     <div className='w-2/3 mx-auto'>
       <Masonry columnsCount={2} gutter='15px'>
