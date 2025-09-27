@@ -2,7 +2,7 @@
   "name": "react-ts-vite",
   "version": "0.0.0",
   "dependencies": {
-    "@contentauth/react": "0.2.37",
+    "@contentauth/react": "0.2.92",
     "@supabase/supabase-js": "^2.12.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

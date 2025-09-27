@@ -1,5 +1,3 @@
-import React from "react";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import UploadFilePopup from "./UploadFilePopup";
 
@@ -16,7 +14,6 @@ function Header({ handleLastUpdatedChange, session, togglePage }) {
             <button className="px-2" onClick={togglePage}>Article</button>
           </li>
           <li>
-            {/* <div>Popup content here !!</div> */}
             <UploadFilePopup
               session={session}
               handleLastUpdatedChange={handleLastUpdatedChange}

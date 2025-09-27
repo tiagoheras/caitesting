@@ -1,4 +1,3 @@
-import React from 'react';
 import C2paImage from './C2paImage';
 import { useC2pa } from '@contentauth/react';
 import { generateVerifyUrl } from 'c2pa';

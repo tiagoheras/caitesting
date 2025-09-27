@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { bucket, supabase } from '../utils/supabaseClient';
+import { bucket } from '../utils/supabaseClient';
 import LogIn from './LogIn';
 
 function UploadFilePopup({handleLastUpdatedChange, session}) {
