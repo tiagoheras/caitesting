@@ -23,25 +23,6 @@ function createSafeFilename(file) {
     return safeFilename;
 }
 
-function createSafeFilename(file) {
-    const fileNameParts = file.name.split('.');
-    const fileExtension = fileNameParts.pop().toLowerCase();
-    let baseName = fileNameParts.join('.');
-
-    // Pasa a minúsculas
-    baseName = baseName.toLowerCase();
-    // Reemplaza acentos y caracteres especiales
-    baseName = baseName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    // Reemplaza espacios y cualquier caracter no alfanumérico por un guión
-    baseName = baseName.replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
-
-    const uniquePrefix = Date.now();
-
-    const safeFilename = `${uniquePrefix}-${baseName}.${fileExtension}`;
-
-    return safeFilename;
-}
-
 function UploadFilePopup({ handleLastUpdatedChange, session }) {
     const [open, setOpen] = useState(false);
     const closeModal = () => {
