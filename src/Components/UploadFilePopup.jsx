@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { bucket } from '../utils/supabaseClient';
@@ -29,6 +29,7 @@ function UploadFilePopup({ handleLastUpdatedChange, session }) {
         setOpen(false);
         setFilesToUpload([]);
     };
+    const fileInputRef = useRef(null);
 
     const [isDragging, setIsDragging] = useState(false);
     const [filesToUpload, setFilesToUpload] = useState([]);
@@ -66,6 +67,13 @@ function UploadFilePopup({ handleLastUpdatedChange, session }) {
             handleFileSelection(e.dataTransfer.files);
         }
     };
+
+    const handleClean = () => {
+        setFilesToUpload([]);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = null;
+        }
+    }
 
     const uploadPicture = async (file) => {
         try {
@@ -134,6 +142,7 @@ function UploadFilePopup({ handleLastUpdatedChange, session }) {
                                 id="dropzone-file"
                                 type="file"
                                 className="hidden"
+                                ref={fileInputRef}
                                 multiple
                             />
                         </label>
@@ -149,7 +158,7 @@ function UploadFilePopup({ handleLastUpdatedChange, session }) {
                                 </ul>
                                 <div className='flex justify-between items-center mt-4'>
                                     <button
-                                        onClick={() => setFilesToUpload([])}
+                                        onClick={handleClean}
                                         className='text-sm text-red-500 hover:underline'
                                     >
                                         Limpiar todo
